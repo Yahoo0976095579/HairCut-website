@@ -34,7 +34,7 @@
 
 - Instagram: [@kakaka_hair](https://www.instagram.com/kakaka_hair/)
 - 地址：[411 臺中市太平區中山路二段 87 號](https://maps.app.goo.gl/pLC4hoK4v4xcHXXi6)
-- Line：[@點我進入 Line](https://line.me/R/ti/p/%40752vuhxm)
+- Line：[點我進入 Line](https://line.me/R/ti/p/%40752vuhxm)
 
 ## 授權資訊
 
