@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>時尚剪影 - 專業剪髮工作室</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+    }
+.instagram-icon-gradient {
+    /* 定義 Instagram 漸層背景 */
+    background: radial-gradient(
+        circle at 30% 107%, 
+        #fdf497 0%,      /* 黃色 */
+        #fd5949 45%,     /* 橘紅色 */
+        #d6249f 60%,     /* 紫紅色 */
+        #285aeb 90%      /* 藍色 */
+    );
+    
+    /* 關鍵步驟 1: 將背景顏色裁切成文字的形狀 */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* 關鍵步驟 2: 將文字顏色設為完全透明，讓背景顏色顯現 */
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* 確保瀏覽器相容性 */
+}
+
+    :root {
+      --primary-color: #1a1a2e;
+      --secondary-color: #c9a961;
+      --accent-color: #e94560;
+      --text-dark: #2d2d2d;
+      --text-light: #666;
+      --bg-light: #f8f9fa;
+      --white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+      --gradient-gold: linear-gradient(135deg, #c9a961 0%, #e0c98a 100%);
+      --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* 導航列 */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      transform: translateY(0);
+      transition: transform 0.28s cubic-bezier(.2,.8,.2,1), background 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* 隱藏 navbar（往下捲動）*/
+    nav.hidden {
+      transform: translateY(-120%);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+    }
+
+    .nav-menu a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--secondary-color);
+      transition: width 0.3s ease;
+    }
+
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 3px;
+      background: var(--primary-color);
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    /* 首頁橫幅 */
+    .hero {
+      height: 100vh;
+      background: var(--gradient-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.03)"/></svg>');
+      background-size: 40px 40px;
+      animation: moveGrid 20s linear infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes moveGrid {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(40px, 40px);
+      }
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(201, 169, 97, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      margin-bottom: 3rem;
+      opacity: 0.95;
+      font-weight: 300;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1.2rem 3rem;
+      background: var(--gradient-gold);
+      color: var(--primary-color);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 4px 15px rgba(201, 169, 97, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(201, 169, 97, 0.6);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--secondary-color);
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      background: var(--secondary-color);
+      color: var(--primary-color);
+    }
+
+    .btndiv {
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    /* 滾動向下指示 */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      40% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+
+      60% {
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
+
+    .scroll-indicator::after {
+      content: '↓';
+      font-size: 2rem;
+      color: var(--secondary-color);
+    }
+
+    /* 區塊通用樣式 */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .sectionforhero {
+      max-width: 100%;
+
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .section-tag {
+      display: inline-block;
+      color: var(--secondary-color);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      color: var(--text-light);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* 促銷活動 */
+    .promo-section {
+      background: var(--gradient-dark);
+      padding: 0;
+      max-width: 100%;
+    }
+
+    .promo-banner {
+      background: linear-gradient(135deg, var(--accent-color) 0%, #ff6b6b 100%);
+      color: var(--white);
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .promo-banner::before {
+      content: '✦';
+      position: absolute;
+      font-size: 15rem;
+      opacity: 0.08;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(15deg);
+      animation: rotateDecor 15s linear infinite;
+    }
+
+    @keyframes rotateDecor {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    .promo-banner h3 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .promo-banner p {
+      font-size: 1.3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 服務項目 */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem;
+      margin-top: 3rem;
+      /* 讓每個格子等高，方便卡片內部使用 flex 排版對齊底部 */
+      grid-auto-rows: 1fr;
+    }
+    /* 行動版：顯示單張縮圖，隱藏原本格子 */
+    .services-mobile { display: none; }
+    .services-mobile-img {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      cursor: pointer;
+      display: block;
+      margin: 1rem auto 0;
+    }
+
+    /* 放大遮罩 (lightbox) */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.75);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease;
+      z-index: 2000;
+    }
+    .modal.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-img {
+      max-width: 92%;
+      max-height: 84%;
+      border-radius: 10px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .modal-close {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      border: 0;
+      font-size: 1.4rem;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 2001;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      transition: all 0.4s ease;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+      /* 轉為 column flex，讓內部元素可以以 margin-top: auto 推到卡片底部 */
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient-gold);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      border-color: var(--secondary-color);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      filter: grayscale(0.3);
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover .service-icon {
+      filter: grayscale(0);
+      transform: scale(1.1) rotateY(360deg);
+    }
+
+    .service-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    .service-card p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    /* 把分隔線從 price-container 移到卡片描述段落底部，讓所有卡片的分隔線對齊（只針對第一個描述段） */
+    .service-card > p:first-of-type {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .price-container {
+      /* 撐滿卡片剩餘高度，讓按鈕可以固定在卡片底部 */
+      margin-top: 0;
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex: 1; /* 重要：撐開高度 */
+    }
+
+    /* 價格文字不會因為 price-container 撐高而延展 */
+    .price-container .price,
+    .price-container p {
+      flex: 0 0 auto;
+    }
+
+    .price-container p {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .price {
+      font-size: 1rem;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .price span {
+      font-size: 0.6rem;
+    }
+
+    .service-btn {
+      display: inline-block;
+      padding: 0.7rem 1.8rem;
+      background: var(--gradient-gold);
+      color: var(--primary-color);
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(10px);
+      margin-top: auto; /* 重要：推到 price-container 底部，再由 price-container 撐到卡片底 */
+    }
+
+    .service-card:hover .service-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 設計師介紹 */
+    .designer-section {
+      background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%);
+    }
+
+    .designer-profile {
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+      background: var(--white);
+      padding: 3rem;
+      border-radius: 25px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .designer-photo-container {
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .designer-photo {
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: var(--gradient-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+      color: var(--white);
+      box-shadow: 0 15px 50px rgba(201, 169, 97, 0.4);
+      position: relative;
+      overflow: hidden;
+      border: 5px solid var(--white);
+      transition: all 0.5s ease;
+    }
+
+    .designer-photo::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .designer-profile:hover .designer-photo {
+      transform: scale(1.05);
+    }
+
+    .designer-profile:hover .designer-photo::before {
+      transform: translateX(100%);
+    }
+
+    .designer-badge {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent-color);
+      color: var(--white);
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .designer-info {
+      flex: 1;
+    }
+
+    .designer-info h3 {
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .designer-info .role {
+      color: var(--secondary-color);
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+
+    .designer-info p {
+      color: var(--text-light);
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+    }
+
+    .designer-stats {
+      display: flex;
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1rem 1.5rem;
+      background: var(--bg-light);
+      border-radius: 15px;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .designer-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .skill-tag {
+      background: var(--gradient-gold);
+      padding: 0.7rem 1.5rem;
+      border-radius: 25px;
+      color: var(--primary-color);
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: 0 3px 10px rgba(201, 169, 97, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(201, 169, 97, 0.5);
+    }
+
+    /* 作品集 - 瀑布流布局 */
+    .portfolio-section {
+      background: var(--primary-color);
+      color: var(--white);
+      max-width: 100%;
+    }
+
+    .portfolio-section .section-title {
+      color: var(--white);
+    }
+
+    .portfolio-section .section-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .portfolio-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 320px; /* 桌機預設較高，圖片較大 */
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      cursor: pointer;
+      background: linear-gradient(135deg, rgba(201, 169, 97, 0.2), rgba(233, 69, 96, 0.2));
+      transition: all 0.4s ease;
+    }
+    
+    /* .portfolio-item:nth-child(1) {
+       grid-column: span 1;
+       grid-row: span 1;
+     }
+ 
+     .portfolio-item:nth-child(4) {
+       grid-column: span 2;
+       grid-row: span 2;
+     }
+ 
+     .portfolio-item:nth-child(6) {
+       grid-row: span 1;
+     } */
+ 
+    .portfolio-item::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .portfolio-item:hover::before {
+      opacity: 1;
+    }
+
+    .portfolio-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+
+    .portfolio-placeholder {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: linear-gradient(135deg, rgba(201, 169, 97, 0.15), rgba(233, 69, 96, 0.15));
+    }
+    /* 圖片覆滿格子並裁切保持比例 */
+    .portfolio-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .portfolio-item:hover .portfolio-placeholder img {
+      transform: scale(1.06);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      color: var(--white);
+      z-index: 2;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .portfolio-overlay h4 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .portfolio-overlay p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .portfolio-tag {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: var(--primary-color);
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      font-weight: 600;
+    }
+
+    /* 預約系統 */
+    .booking-section {
+      background: linear-gradient(180deg, var(--white) 0%, var(--bg-light) 100%);
+    }
+
+    .booking-container {
+      max-width: 800px;
+      margin: 3rem auto 0;
+    }
+
+    .qr-box {
+      background: var(--white);
+      padding: 4rem 3rem;
+      border-radius: 30px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .qr-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--gradient-gold);
+    }
+
+    .qr-placeholder {
+      width: 100%;
+      max-width: 250px;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, var(--bg-light) 0%, #e8e8e8 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      color: var(--text-light);
+      margin: 0 auto 2rem;
+      border: 3px dashed var(--secondary-color);
+      transition: all 0.3s ease;
+      box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .qr-placeholder:hover {
+      transform: scale(1.02);
+      border-style: solid;
+      box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .booking-title {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .booking-subtitle {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .booking-info {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 2px solid var(--bg-light);
+    }
+
+    .booking-info h4 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 固定三欄 */
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-item {
+      background: var(--bg-light);
+      padding: 1.5rem;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: var(--gradient-gold);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(201, 169, 97, 0.3);
+    }
+
+    .contact-icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-item span:last-child {
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    /* 頁腳 */
+    footer {
+      background: var(--gradient-dark);
+      color: var(--white);
+      padding: 4rem 2rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-section h3 {
+      color: var(--secondary-color);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.8rem;
+      transition: all 0.3s ease;
+      line-height: 1.8;
+    }
+
+    .footer-section a:hover {
+      color: var(--secondary-color);
+      transform: translateX(5px);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .social-icons a:hover {
+      background: var(--secondary-color);
+      transform: translateY(-5px) rotate(360deg);
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.95rem;
+    }
+
+    /* 滾動動畫 */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px); /* 減少位移距離 */
+      transition: all 0.6s ease; /* 稍微加快動畫 */
+      position: relative; /* 添加定位 */
+      z-index: 1; /* 確保正確的層級 */
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 確保 footer 永遠在最上層 */
+    footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 響應式設計 - 平板 */
+    @media (max-width: 1200px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+ 
+      .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 260px; /* 平板較小 */
+      }
+    }
+ 
+    @media (max-width: 992px) {
+      section {
+        padding: 4rem 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+      }
+
+      .designer-profile {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .designer-photo {
+        width: 280px;
+        height: 280px;
+        font-size: 6rem;
+      }
+
+      .designer-skills {
+        justify-content: center;
+      }
+
+      .designer-stats {
+        justify-content: center;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 220px; /* 小螢幕：保留較高比例避免畫面太窄 */
+      }
+
+      .portfolio-item:nth-child(1),
+      .portfolio-item:nth-child(4) {
+        grid-column: span 1;
+        grid-row: span 2;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+      
+    }
+
+    /* 響應式設計 - 手機 */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 1rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: left 0.3s ease;
+        box-shadow: var(--shadow-lg);
+        padding: 2rem 0;
+        gap: 1.5rem;
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .nav-menu li {
+        padding: 0.5rem 0;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+      }
+
+      .hero {
+        min-height: 100vh;
+        height: auto;
+        padding: 8rem 1.5rem 4rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      section {
+        padding: 3rem 1.5rem;
+      }
+
+      .section-header {
+        margin-bottom: 3rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .section-subtitle {
+        font-size: 1rem;
+      }
+
+      .services-grid {
+        display: none;
+      }
+      .services-mobile {
+        display: block;
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+      .services-mobile-img {
+        width: 90%;
+        max-width: 360px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        cursor: pointer;
+        display: inline-block;
+      }
+
+      .service-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .promo-banner {
+        padding: 3rem 1.5rem;
+      }
+
+      .promo-banner h3 {
+        font-size: 1.8rem;
+      }
+
+      .promo-banner p {
+        font-size: 1.1rem;
+      }
+
+      .designer-photo {
+        width: 250px;
+        height: 250px;
+        font-size: 5rem;
+      }
+
+      .designer-info h3 {
+        font-size: 2rem;
+      }
+
+      .designer-info .role {
+        font-size: 1.1rem;
+      }
+
+      .designer-info p {
+        font-size: 1rem;
+      }
+      .designer-info .pinfo{
+        font-size: 1.5rem;
+
+      }
+
+      .designer-stats {
+    flex-direction: row; /* 改為橫向排列 */
+    justify-content:space-evenly; /* 平均分配空間 */
+    gap: 0.5rem; /* 縮小間距 */
+  }
+
+  .stat-item {
+    width: calc(33.33% - 0.6rem); /* 平均分配寬度，減去間距 */
+    padding: 0.8rem; /* 縮小內距 */
+  }
+
+  .stat-number {
+    font-size: 1.3rem; /* 稍微調整數字大小 */
+  }
+
+  .stat-label {
+    font-size: 0.8rem; /* 稍微調整標籤文字大小 */
+  }
+
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 220px; /* 小螢幕：保留較高比例避免畫面太窄 */
+        gap: 1.5rem;
+      }
+
+      .portfolio-item:nth-child(1),
+      .portfolio-item:nth-child(4),
+      .portfolio-item:nth-child(6) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .portfolio-placeholder {
+        font-size: 4rem;
+      }
+
+      .portfolio-overlay {
+        padding: 1.5rem;
+      }
+
+      .portfolio-overlay h4 {
+        font-size: 1.3rem;
+      }
+
+      .qr-box {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .qr-placeholder {
+        max-width: 300px;
+        font-size: 4rem;
+      }
+
+      .booking-title {
+        font-size: 1.6rem;
+      }
+
+      .contact-grid {
+        grid-template-columns:repeat(3,1fr);
+        gap: 1rem;
+      }
+
+      .contact-item {
+        padding: 1.2rem;
+      }
+      
+
+    }
+
+    /* 超小手機 */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero p {
+        font-size: 0.9rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .service-icon {
+        font-size: 3rem;
+      }
+
+      .price {
+        font-size: 1.6rem;
+      }
+
+      .price span {
+        font-size: 0.8rem;
+      }
+
+      .designer-photo {
+        width: 200px;
+        height: 200px;
+        font-size: 4rem;
+      }
+
+      .qr-placeholder {
+        max-width: 260px;
+        font-size: 3.5rem;
+      }
+      
+
+      .btn {
+        padding: 1rem 2rem;
+        font-size: 0.95rem;
+      }
+      .service-card span{
+        font-size: 0.7rem;
+      }
+      .contact-grid {
+        grid-template-columns:repeat(3,1fr);
+        gap: 1rem;
+      }
+      .contact-item {
+      padding: 1rem;
+    }
+      .contact-item span:last-child {
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+      .stat-label {
+    font-size: 0.8rem; /* 稍微調整標籤文字大小 */
+  }
+  .booking-subtitle{
+        font-size: 1rem;
+  }
+  .section-subtitle{
+        font-size: 0.9rem;
+  }
+    .footer-content{
+      margin-bottom: 1rem;
+    }
+
+    }
+    .back-to-top {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gradient-gold);
+  color: var(--primary-color);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px rgba(201, 169, 97, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+.back-to-top:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(201, 169, 97, 0.5);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    right: 20px;
+    bottom: 20px;
+    width: 45px;
+    height: 45px;
+  }
+  }
+      /* 手機/觸控裝置：關閉 hover 效果，改以 .is-active 控制 overlay */
+@media (hover: none) {
+  /* 不要將整個 .portfolio-item 設為透明（會讓圖片消失） */
+  .portfolio-item:hover::before,
+  .portfolio-item:hover .portfolio-overlay {
+    /* 只取消 overlay 的 hover 顯示，避免滾動/滑動時閃現 */
+    transform: none !important;
+    box-shadow: none !important;
+    opacity: 0 !important;
+  }
+
+  .portfolio-item::before { opacity: 0 !important; }
+  .portfolio-item .portfolio-overlay { opacity: 0 !important; transform: translateY(20px) !important; }
+
+  /* 使用 is-active 顯示 overlay（由 JS 控制） */
+  .portfolio-item.is-active::before { opacity: 1 !important; }
+  .portfolio-item.is-active { transform: scale(1.03) !important; box-shadow: 0 12px 40px rgba(0,0,0,0.35) !important; z-index: 10; }
+  .portfolio-item.is-active .portfolio-placeholder img { transform: scale(1.06); }
+  .portfolio-item.is-active .portfolio-overlay { opacity: 1 !important; transform: translateY(0) !important; }
+}
+  </style>
+</head>
+
+<body>
+  <!-- 導航列 -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">金派剪燙染</a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home">首頁</a></li>
+        <li><a href="#services">服務項目</a></li>
+        <li><a href="#designer">設計師</a></li>
+        <li><a href="#portfolio">作品集</a></li>
+        <li><a href="#booking">預約服務</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 首頁橫幅 -->
+  <section id="home" class="hero sectionforhero">
+    <div class="hero-content animate__animated animate__fadeIn">
+      <h1 class="animate__animated animate__fadeInDown">專業剪髮·藝術造型</h1>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">
+        為您打造獨一無二的時尚風格，展現自信魅力
+      </p>
+      <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-1s">
+        <a href="#booking" class="btn">立即預約</a>
+        <a href="#portfolio" class="btn btn-secondary">查看作品</a>
+      </div>
+    </div>
+    <div class="scroll-indicator"></div>
+  </section>
+
+
+
+  <!-- 服務項目 -->
+  <section id="services" class="fade-in">
+    <div class="section-header">
+      <span class="section-tag">Our Services</span>
+      <h2 class="section-title">專業服務項目</h2>
+      <p class="section-subtitle">精湛技術·貼心服務·合理價格</p>
+    </div>
+
+    <!-- 行動版縮圖（只在小螢幕顯示） -->
+    <div class="services-mobile" aria-hidden="false">
+      <!-- 請放一張縮圖 services-thumb.jpg（或改成你現有檔名），可同時提供高解析圖 services-thumb-large.jpg -->
+      <img src="./images/items/manu.png" data-large="./images/items/manu.png" alt="服務項目預覽" class="services-mobile-img" id="serviceThumb">
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">✂️</div>
+        <h3>基礎剪髮</h3>
+        <p>專業修剪技術，精緻造型設計<br>適合各種髮質與臉型</p>
+        <div class="price-container">
+
+          <div class="price">男士 NT$ 500<span>(含洗)</span> </div>
+          <div class="price">女士 NT$ 600 / 800<span>(含洗)</span> </div>
+          <div class="price">國中~高中 NT$ 400 / 500<span>(含洗)</span> </div>
+          <div class="price">幼童~國小 NT$ 300 / 400<span>(含洗)</span> </div>
+
+          <a href="#booking" class="service-btn">立即預約</a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <h3>創意染髮</h3>
+        <p>進口高品質染劑，自然顯色<br>包含專業剪髮與護髮療程</p>
+        <div class="price-container">
+          <div class="price">補髮/耳上短髮 NT$ 1500</div>
+          <div class="price">頸/肩上 NT$ 2000</div>
+          <div class="price">肩下/胸上 NT$ 2500</div>
+          <p>(造型挑,片漂以現場溝通報價為主, </br>
+            漂髮以長度染價為主)
+          </p>
+          <a href="#booking" class="service-btn">立即預約</a>
+        </div>
+      </div>
+
+
+
+      <div class="service-card">
+        <div class="service-icon">🌊</div>
+        <h3>質感燙髮</h3>
+        <p>溫塑燙、冷塑燙技術<br>打造自然蓬鬆捲度</p>
+        <div class="price-container">
+          <div class="price">冷塑燙 NT$ 2,500起</div>
+          <div class="price">溫塑燙 NT$ 2,500起</div>
+          <a href="#booking" class="service-btn">立即預約</a>
+        </div>
+      </div>
+
+
+      <div class="service-card">
+        <div class="service-icon">💇</div>
+        <h3>保養護髮療程</h3>
+        <p>優質護髮產品<br>深度修復受損髮質</p>
+        <div class="price-container">
+          <div class="price">短(耳/肩上) </br>NT$ 600 / 1,500</div>
+          <div class="price">中(肩下/胸上) </br>NT$ 900 / 1,800</div>
+          <div class="price">長(胸下/腰) </br>NT$ 1,200 / 2,100</div>
+          <a href="#booking" class="service-btn">立即預約</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 放大圖片的遮罩 (lightbox) -->
+    <div class="modal" id="imageModal">
+      <span class="modal-close" id="closeModal">&times;</span>
+      <img class="modal-img" id="modalImg" src="" alt="放大圖片">
+    </div>
+  </section>
+  <!-- 放大遮罩（lightbox） -->
+  <div id="servicesModal" class="modal" aria-hidden="true" role="dialog" aria-label="服務項目放大檢視">
+    <button class="modal-close" aria-label="關閉放大檢視">✕</button>
+    <img class="modal-img" src="" alt="服務項目放大圖">
+  </div>
+
+  <!-- 設計師介紹 -->
+  <section id="designer" class="designer-section fade-in">
+    <div class="section-header">
+      <span class="section-tag">Master Stylist</span>
+      <h2 class="section-title">首席設計師</h2>
+      <p class="section-subtitle">專業認證·豐富經驗·用心服務每一位顧客</p>
+    </div>
+
+    <div class="designer-profile">
+      <div class="designer-photo-container">
+        <div class="designer-photo">👨‍🦱</div>
+        <div class="designer-badge">15年經驗</div>
+      </div>
+      <div class="designer-info">
+        <h3>王志明</h3>
+        <p class="role">資深設計師 / 工作室創辦人</p>
+        <p class="pinfo">擁有15年專業美髮經驗，專精於各式剪髮、染髮與燙髮技術。曾獲台灣美髮大賽金獎，並多次赴日本、韓國進修最新技術。</p>
+        <!-- <p>秉持「每一位顧客都是獨一無二」的理念，致力於為每位顧客打造最適合的個人風格。注重與顧客的溝通，精準掌握需求，創造理想中的完美髮型。</p> -->
+
+        <div class="designer-stats">
+          <div class="stat-item">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">年經驗</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">5000+</span>
+            <span class="stat-label">服務顧客</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">滿意度</span>
+          </div>
+        </div>
+
+        <div class="designer-skills">
+          <span class="skill-tag">精剪技術</span>
+          <span class="skill-tag">創意染髮</span>
+          <span class="skill-tag">造型燙髮</span>
+          <span class="skill-tag">頭皮護理</span>
+          <!-- <span class="skill-tag">韓系造型</span>
+          <span class="skill-tag">日系風格</span> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 作品集 -->
+  <section id="portfolio" class="portfolio-section fade-in">
+    <div class="portfolio-container">
+      <div class="section-header">
+        <span class="section-tag" style="color: var(--secondary-color);">Portfolio</span>
+        <h2 class="section-title">精選作品集</h2>
+        <p class="section-subtitle">每一個作品都是藝術的呈現</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <div class="portfolio-placeholder">
+            <img src="./images/hair/1.png" alt="">
+          </div>
+          <div class="portfolio-overlay">
+            <h4>韓系短髮</h4>
+            <p>清新自然的韓式風格，展現俐落氣質</p>
+            <span class="portfolio-tag">#短髮</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <div class="portfolio-placeholder">
+            <img src="./images/hair/2.png" alt="">
+
+          </div>
+          <div class="portfolio-overlay">
+            <h4>帥氣短髮</h4>
+            <p>時尚男性短髮</p>
+            <span class="portfolio-tag">#短髮</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <div class="portfolio-placeholder">
+            <img src="./images/hair/3.png" alt="">
+
+          </div>
+          <div class="portfolio-overlay">
+            <h4>質感燙髮</h4>
+            <p>自然蓬鬆捲度，增添女性魅力</p>
+            <span class="portfolio-tag">#燙髮</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <div class="portfolio-placeholder">
+            <img src="./images/hair/4.png" alt="">
+
+          </div>
+          <div class="portfolio-overlay">
+            <h4>俐落短髮</h4>
+            <p>個性率性造型，展現自信風采</p>
+            <span class="portfolio-tag">#短髮</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <div class="portfolio-placeholder">
+            <img src="./images/hair/5.png" alt="">
+
+          </div>
+          <div class="portfolio-overlay">
+            <h4>浪漫短內灣捲髮</h4>
+            <p>優雅女性風格，溫柔婉約</p>
+            <span class="portfolio-tag">#燙髮</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <div class="portfolio-placeholder">
+            <img src="./images/hair/6.png" alt="">
+
+          </div>
+          <div class="portfolio-overlay">
+            <h4>特殊色染髮</h4>
+            <p>前衛創意設計，彰顯獨特個性</p>
+            <span class="portfolio-tag">#染髮</span>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-placeholder">
+            <img src="./images/hair/7.png" alt="">
+
+          </div>
+          <div class="portfolio-overlay">
+            <h4>成熟型男</h4>
+            <p>前衛創意設計，彰顯獨特個性</p>
+            <span class="portfolio-tag">#染髮</span>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-placeholder">
+            <img src="./images/hair/8.png" alt="">
+
+          </div>
+          <div class="portfolio-overlay">
+            <h4>俐落短髮</h4>
+            <p>個性率性造型，展現自信風采</p>
+            <span class="portfolio-tag">#短髮</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btndiv">
+      <a href="https://www.instagram.com/kakaka_hair/" target="_blank"><button class="btn btn-primary"> 查看更多</button></a>
+
+    </div>
+
+  </section>
+
+  <!-- 預約系統 -->
+  <section id="booking" class="booking-section fade-in">
+    <div class="section-header">
+      <span class="section-tag">Book Now</span>
+      <h2 class="section-title">預約您的專屬時光</h2>
+      <p class="section-subtitle">掃描 QR Code 或聯絡我們，開始您的美麗蛻變</p>
+    </div>
+
+    <div class="booking-container">
+      <div class="qr-box">
+        <a href="https://lin.ee/CPJEleZ" target="_blank">
+        <div class="qr-placeholder">
+        <img src="./images/items/lineqrcode.png" alt="Line"></div>
+        </a>
+        <h3 class="booking-title">Line 官方帳號預約</h3>
+        <p class="booking-subtitle">
+          掃描上方 QR Code 加入 Line 官方帳號<br>
+          即可快速預約您的專屬造型時間
+        </p>
+
+        <div class="booking-info">
+          <h4>其他聯絡方式</h4>
+          <div class="contact-grid">
+
+            <a class="contact-item" href="https://www.instagram.com/kakaka_hair/" target="_blank" rel="noopener noreferrer" aria-label="前往 Instagram">
+              <span class="contact-icon">
+              <i class="bi bi-instagram instagram-icon-gradient" style="font-size: 24px;"></i>
+              </span>
+              <span>IG</span>
+            </a>
+            <a class="contact-item" href="https://www.facebook.com/profile.php?id=100064194482296" target="_blank" rel="noopener noreferrer" aria-label="開啟地圖">
+              <span class="contact-icon">
+            <i class="fa-brands fa-square-facebook" style="font-size: 40px; color: #1877F2;"></i>
+              </span>
+              <span>FB</span>
+            </a>
+            <a class="contact-item" href="https://maps.app.goo.gl/Mfwwr2VtHCxoSS869" target="_blank" rel="noopener noreferrer" aria-label="開啟地圖">
+              <span class="contact-icon">📍</span>
+              <span class="changesizemobile">地址</span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 頁腳 -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>金派工作室</h3>
+        <p>打造專屬您的時尚風格</p>
+
+        <div class="social-icons">
+          <a  href="https://www.instagram.com/kakaka_hair/" target="_blank" rel="noopener noreferrer" aria-label="前往 Instagram">
+            <i class="bi bi-instagram instagram-icon-gradient" style="font-size: 24px;"></i>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100064194482296" target="_blank" aria-label="FB">
+            <i class="fa-brands fa-square-facebook" style="font-size: 24px; color: #1877F2;"></i>
+          </a>
+          <a href="https://lin.ee/CPJEleZ" target="_blank" aria-label="Line">
+            <i class="fa-brands fa-line" style="font-size: 24px; color: #00C300;"></i>
+          </a>
+          
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>營業時間</h3>
+        <p>週一至週六：13:00 - 21:00 (週二公休)</p>
+        <p>週日：13:30 - 21:00</p>
+        
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+          ※ 建議提前預約以確保服務時間
+        </p>
+      </div>
+
+      <div class="footer-section">
+        <h3>地址</h3>
+        <a href="https://maps.app.goo.gl/Mfwwr2VtHCxoSS869" target="_blank"><p>📍 411台中市太平區中山路二段87號</p></a>
+
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 金派時尚工作室 Fashion Hair Studio. All rights reserved.</p>
+    </div>
+  </footer>
+<button id="backToTop" class="back-to-top" aria-label="回到頂部">
+  <i class="fas fa-chevron-up"></i>
+</button>
+  <script>
+    // 漢堡選單
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    const navbar = document.getElementById('navbar');
+    let lastScrollY = window.pageYOffset;
+ 
+    // 在 script 標籤內加入
+const backToTopButton = document.getElementById('backToTop');
+
+// 控制按鈕顯示/隱藏
+window.addEventListener('scroll', throttle(() => {
+  if (window.pageYOffset > 300) {
+    backToTopButton.classList.add('visible');
+  } else {
+    backToTopButton.classList.remove('visible');
+  }
+}, 200));
+
+// 點擊回到頂部
+backToTopButton.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+ 
+    // 點擊選單項目後關閉選單
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+ 
+    // 滾動效果與導航列
+    window.addEventListener('scroll', () => {
+      const currentY = window.pageYOffset;
+ 
+      // 加/移除 scrolled 樣式（舊有行為）
+      if (currentY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+ 
+      // 往下捲動：隱藏 navbar；往上捲動：顯示 navbar
+      if (currentY > lastScrollY && currentY > 80) {
+        // 向下滾動且已超過門檻，隱藏
+        navbar.classList.add('hidden');
+      } else {
+        // 向上捲動或回到頂部，顯示
+        navbar.classList.remove('hidden');
+      }
+ 
+      lastScrollY = currentY <= 0 ? 0 : currentY;
+ 
+      // 滾動顯示動畫（維持原本功能）
+      const fadeElements = document.querySelectorAll('.fade-in');
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (elementTop < windowHeight - 100) {
+          element.classList.add('visible');
+        }
+      });
+ 
+      // 當前頁面標記（維持原本功能）
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-menu a');
+      let current = '';
+ 
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+ 
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+ 
+    // 平滑滾動
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offsetTop = target.offsetTop - 70;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+ 
+    // 服務卡片互動效果
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach((card, index) => {
+      card.addEventListener('mouseenter', function () {
+        this.style.background = 'linear-gradient(135deg, #fff 0%, #f8f8f8 100%)';
+      });
+      card.addEventListener('mouseleave', function () {
+        this.style.background = 'var(--white)';
+      });
+ 
+      // 序列動畫
+      setTimeout(() => {
+        card.classList.add('animate__animated', 'animate__fadeInUp');
+      }, index * 100);
+    });
+ 
+    // 作品集項目互動
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+portfolioItems.forEach((item, index) => {
+  // 移除直接修改 inline transform 的 click handler（避免與 .is-active 衝突）
+  // 只保留序列動畫與無障礙支援
+  setTimeout(() => {
+    item.classList.add('animate__animated', 'animate__zoomIn');
+  }, index * 150);
+});
+    (function enableTouchOverlayToggle() {
+  // 只在不支援 hover 的裝置啟用（手機/平板）
+  if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
+    const items = document.querySelectorAll('.portfolio-item');
+    if (!items.length) return;
+
+    items.forEach(item => {
+      item.addEventListener('click', function (e) {
+        // 點選同一個則關閉；點別處則開啟並關閉其他項
+        if (this.classList.contains('is-active')) {
+          this.classList.remove('is-active');
+        } else {
+          items.forEach(i => i.classList.remove('is-active'));
+          this.classList.add('is-active');
+        }
+        // 阻止點擊穿透到 document click 關閉處理（見下）
+        e.stopPropagation();
+      });
+
+      // 可用鍵盤 Enter/Space 也觸發（無障礙）
+      item.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
+        }
+      });
+    });
+
+    // 點擊畫面其他處關閉 overlay
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.portfolio-item')) {
+        items.forEach(i => i.classList.remove('is-active'));
+      }
+    });
+
+    // 當視窗大小改變（例如旋轉）時關閉所有 overlay
+    window.addEventListener('orientationchange', () => {
+      items.forEach(i => i.classList.remove('is-active'));
+    });
+  }
+})();
+ 
+    // 載入時動畫
+    window.addEventListener('load', () => {
+      // 首次載入時觸發滾動檢查
+      window.dispatchEvent(new Event('scroll'));
+    });
+ 
+    // 設計師照片互動效果
+    const designerPhoto = document.querySelector('.designer-photo');
+    if (designerPhoto) {
+      designerPhoto.addEventListener('click', function () {
+        this.style.transition = 'transform 0.6s ease';
+        this.style.transform = 'rotate(360deg) scale(1.1)';
+        setTimeout(() => {
+          this.style.transform = 'rotate(0deg) scale(1)';
+        }, 600);
+      });
+    }
+ 
+    // QR Code 區域互動
+    const qrPlaceholder = document.querySelector('.qr-placeholder');
+    if (qrPlaceholder) {
+      qrPlaceholder.addEventListener('mouseenter', function () {
+        this.style.transform = 'scale(1.05) rotate(2deg)';
+        this.style.borderStyle = 'solid';
+      });
+      qrPlaceholder.addEventListener('mouseleave', function () {
+        this.style.transform = 'scale(1) rotate(0deg)';
+        this.style.borderStyle = 'dashed';
+      });
+    }
+ 
+    // 鍵盤無障礙支援
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+    });
+ 
+    // 為互動元素添加鍵盤支援
+    [...serviceCards, ...portfolioItems].forEach(item => {
+      item.setAttribute('tabindex', '0');
+      item.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
+        }
+      });
+    });
+ 
+    // 性能優化：節流函數
+    function throttle(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // 手機縮圖點擊放大（使用 #servicesModal）
+    (function () {
+      const thumb = document.getElementById('serviceThumb');
+      const modal = document.getElementById('servicesModal');
+      if (!thumb || !modal) return;
+      const modalImg = modal.querySelector('.modal-img');
+      const closeBtn = modal.querySelector('.modal-close');
+
+      function openModal(src) {
+        modalImg.src = src;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        modalImg.src = '';
+      }
+
+      thumb.addEventListener('click', () => {
+        const large = thumb.dataset.large || thumb.src;
+        openModal(large);
+      });
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+    })();
+
+
+  </script>
+</body>
+
+</html>
