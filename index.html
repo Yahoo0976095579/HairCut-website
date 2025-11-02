@@ -27,6 +27,11 @@
       text-decoration: none;
     }
 
+    /* 預設隱藏手機版內容 */
+    .mobile-only {
+      display: none;
+    }
+
     .instagram-icon-gradient {
       /* 定義 Instagram 漸層背景 */
       background: radial-gradient(circle at 30% 107%,
@@ -662,6 +667,13 @@
       overflow: hidden;
       border: 5px solid var(--white);
       transition: all 0.5s ease;
+    }
+
+    .designer-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     .designer-photo::before {
@@ -1405,8 +1417,14 @@
       }
 
       .designer-info .pinfo {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
 
+      .designer-info .pinfo p {
+        margin-bottom: 0.8rem;
+        color: #555;
       }
 
       .designer-stats {
@@ -1499,6 +1517,11 @@
         height: 45px;
       }
 
+      .designer-profile {
+        gap: 3rem;
+
+      }
+
     }
 
     /* 超小手機 */
@@ -1521,6 +1544,27 @@
 
       .price {
         font-size: 1.6rem;
+      }
+
+      .desktop-only {
+        display: none;
+      }
+
+      .mobile-only {
+        display: block;
+      }
+
+      .designer-info .pinfo {
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .faq-title {
+        font-size: 1.2rem;
+      }
+
+      .faq-content {
+        font-size: 0.95rem;
       }
 
       .price span {
@@ -1803,22 +1847,33 @@
 
     <div class="designer-profile">
       <div class="designer-photo-container">
-        <div class="designer-photo">👨‍🦱</div>
-        <div class="designer-badge">15年經驗</div>
+        <div class="designer-photo">
+          <img src="./images/items/conbon.webp" alt="設計師照片" class="designer-image">
+        </div>
+        <div class="designer-badge">28年經驗+</div>
       </div>
       <div class="designer-info">
-        <h3>王志明</h3>
+        <h3>伊珊 I-Shan</h3>
         <p class="role">資深設計師 / 工作室創辦人</p>
-        <p class="pinfo">擁有15年專業美髮經驗，專精於各式剪髮、染髮與燙髮技術。曾獲台灣美髮大賽金獎，並多次赴日本、韓國進修最新技術。</p>
-        <!-- <p>秉持「每一位顧客都是獨一無二」的理念，致力於為每位顧客打造最適合的個人風格。注重與顧客的溝通，精準掌握需求，創造理想中的完美髮型。</p> -->
+        <div class="pinfo">
+          <!-- 電腦版顯示的文字 -->
+          <p class="desktop-only">擁有超過 28 年專業美髮經驗，親手打造超過 5 萬位顧客的完美造型。</p>
+          <p class="desktop-only">從南投到台北、從時尚伸展台到酒店梳妝間，每一次剪裁與造型都蘊含細膩手感與藝術靈魂。</p>
+          <p class="desktop-only">橫跨燙、染、剪、整體造型與快速剪髮教學，熟稔各種髮質與臉型特徵，以專業眼光與豐富經驗，量身設計屬於每一位顧客的「專屬風格」。</p>
+
+          <!-- 手機版顯示的文字 -->
+          <p class="mobile-only">擁有超過 28 年專業美髮經驗，<br>親手打造超過 5 萬位顧客造型。</p>
+          <p class="mobile-only">橫跨燙、染、剪與整體造型設計，<br>手法細膩、風格多變。</p>
+          <p class="mobile-only">以專業眼光打造專屬於你的完美造型，<br>讓每一次改變都是一次全新的蛻變。</p>
+        </div>
 
         <div class="designer-stats">
           <div class="stat-item">
-            <span class="stat-number">15+</span>
+            <span class="stat-number">28+</span>
             <span class="stat-label">年經驗</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">5000+</span>
+            <span class="stat-number">50000+</span>
             <span class="stat-label">服務顧客</span>
           </div>
           <div class="stat-item">
@@ -1956,7 +2011,7 @@
     <div class="section-header">
       <span class="section-tag">Book Now</span>
       <h2 class="section-title">預約您的專屬時光</h2>
-      <p class="section-subtitle">掃描 QR Code 或聯絡我們，開始您的美麗蛻變</p>
+      <p class="section-subtitle">掃描 QR Code 或 點擊QR Code，開始您的美麗蛻變</p>
     </div>
 
     <div class="booking-container">
