@@ -1459,7 +1459,14 @@
     .footer-content{
       margin-bottom: 1rem;
     }
-
+    .portfolio-container {
+      padding: 0 0rem;
+    }
+.portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 175px; /* 小螢幕：保留較高比例避免畫面太窄 */
+        gap: 1.5rem;
+      }
     }
     .back-to-top {
   position: fixed;
