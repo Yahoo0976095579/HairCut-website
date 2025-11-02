@@ -4,21 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 新增以下 SEO 相關 meta 標籤 -->
-    <meta name="description" content="金派剪染燙專業美髮工作室，提供剪髮、染髮、燙髮等專業服務，位於台中市太平區">
-    <meta name="keywords" content="金派剪染燙,美髮,剪髮,染髮,燙髮,台中髮廊,太平區美髮">
-    <meta property="og:title" content="金派剪染燙 - 專業美髮工作室">
-    <meta property="og:description" content="專業剪髮、染髮、燙髮服務，為您打造獨特風格">
-    <meta property="og:image" content="./images/items/manu.png">
-    <meta property="og:url" content="https://jinpai-haircut.vercel.app/">
-    <meta name="google-site-verification" content="fgBujjeaGBVfUlzpQvCqTdoUQNO9Iilf9zeX3UrJkHo" />
-    <title>金派剪染燙 - 專業美髮工作室</title>
+  <title>時尚剪影 - 專業剪髮工作室</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  
-<link rel="icon" type="image/png" href="/favicon.png">
-
   <style>
     * {
       margin: 0;
@@ -436,54 +425,6 @@
       /* 讓每個格子等高，方便卡片內部使用 flex 排版對齊底部 */
       grid-auto-rows: 1fr;
     }
-    /* 行動版：顯示單張縮圖，隱藏原本格子 */
-    .services-mobile { display: none; }
-    .services-mobile-img {
-      width: 100%;
-      max-width: 360px;
-      border-radius: 12px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-      cursor: pointer;
-      display: block;
-      margin: 1rem auto 0;
-    }
-
-    /* 放大遮罩 (lightbox) */
-    .modal {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.75);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.25s ease;
-      z-index: 2000;
-    }
-    .modal.open {
-      opacity: 1;
-      visibility: visible;
-    }
-    .modal-img {
-      max-width: 92%;
-      max-height: 84%;
-      border-radius: 10px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-    .modal-close {
-      position: absolute;
-      left: 18px;
-      top: 18px;
-      background: rgba(255,255,255,0.06);
-      color: #fff;
-      border: 0;
-      font-size: 1.4rem;
-      padding: 6px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      z-index: 2001;
-    }
 
     .service-card {
       background: var(--white);
@@ -792,11 +733,11 @@
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 320px; /* 桌機預設較高，圖片較大 */
+      grid-auto-rows: 250px;
       gap: 1.5rem;
       margin-top: 3rem;
     }
-    
+
     .portfolio-item {
       position: relative;
       overflow: hidden;
@@ -805,21 +746,21 @@
       background: linear-gradient(135deg, rgba(201, 169, 97, 0.2), rgba(233, 69, 96, 0.2));
       transition: all 0.4s ease;
     }
-    
-    /* .portfolio-item:nth-child(1) {
-       grid-column: span 1;
-       grid-row: span 1;
-     }
- 
-     .portfolio-item:nth-child(4) {
-       grid-column: span 2;
-       grid-row: span 2;
-     }
- 
-     .portfolio-item:nth-child(6) {
-       grid-row: span 1;
-     } */
- 
+
+    .portfolio-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .portfolio-item:nth-child(4) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .portfolio-item:nth-child(6) {
+      grid-row: span 1;
+    }
+
     .portfolio-item::before {
       content: '';
       position: absolute;
@@ -844,19 +785,12 @@
     .portfolio-placeholder {
       width: 100%;
       height: 100%;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      color: rgba(255, 255, 255, 0.3);
       background: linear-gradient(135deg, rgba(201, 169, 97, 0.15), rgba(233, 69, 96, 0.15));
-    }
-    /* 圖片覆滿格子並裁切保持比例 */
-    .portfolio-placeholder img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease;
-    }
-    .portfolio-item:hover .portfolio-placeholder img {
-      transform: scale(1.06);
     }
 
     .portfolio-overlay {
@@ -1105,13 +1039,13 @@
       .services-grid {
         grid-template-columns: repeat(2, 1fr);
       }
- 
+
       .portfolio-grid {
         grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: 260px; /* 平板較小 */
+        grid-auto-rows: 220px;
       }
     }
- 
+
     @media (max-width: 992px) {
       section {
         padding: 4rem 1.5rem;
@@ -1147,7 +1081,7 @@
 
       .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 220px; /* 小螢幕：保留較高比例避免畫面太窄 */
+        grid-auto-rows: 200px;
       }
 
       .portfolio-item:nth-child(1),
@@ -1258,21 +1192,8 @@
       }
 
       .services-grid {
-        display: none;
-      }
-      .services-mobile {
-        display: block;
-        text-align: center;
-        margin-top: 0.5rem;
-      }
-      .services-mobile-img {
-        width: 90%;
-        max-width: 360px;
-        height: auto;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-        cursor: pointer;
-        display: inline-block;
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
 
       .service-card {
@@ -1334,7 +1255,7 @@
 
       .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 175px; /* 小螢幕：保留較高比例避免畫面太窄 */
+        grid-auto-rows: 200px;
         gap: 1.5rem;
       }
 
@@ -1354,16 +1275,8 @@
       }
 
       .portfolio-overlay h4 {
-        font-size: 1rem;
+        font-size: 1.3rem;
       }
-
-    .portfolio-overlay p {
-      font-size: 0.8rem;
-      opacity: 0.9;
-    }
-    .portfolio-container {
-      padding: 0 0rem;
-    }
 
       .qr-box {
         padding: 2.5rem 1.5rem;
@@ -1386,12 +1299,7 @@
       .contact-item {
         padding: 1.2rem;
       }
-        .back-to-top {
-    right: 20px;
-    bottom: 20px;
-    width: 45px;
-    height: 45px;
-  }
+      
 
     }
 
@@ -1464,14 +1372,7 @@
     .footer-content{
       margin-bottom: 1rem;
     }
-    .portfolio-container {
-      padding: 0 0rem;
-    }
-.portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 175px; /* 小螢幕：保留較高比例避免畫面太窄 */
-        gap: 1.5rem;
-      }
+
     }
     .back-to-top {
   position: fixed;
@@ -1506,27 +1407,14 @@
   transform: translateY(0);
 }
 
-
-      /* 手機/觸控裝置：關閉 hover 效果，改以 .is-active 控制 overlay */
-@media (hover: none) {
-  /* 不要將整個 .portfolio-item 設為透明（會讓圖片消失） */
-  .portfolio-item:hover::before,
-  .portfolio-item:hover .portfolio-overlay {
-    /* 只取消 overlay 的 hover 顯示，避免滾動/滑動時閃現 */
-    transform: none !important;
-    box-shadow: none !important;
-    opacity: 0 !important;
+@media (max-width: 768px) {
+  .back-to-top {
+    right: 20px;
+    bottom: 20px;
+    width: 45px;
+    height: 45px;
   }
-
-  .portfolio-item::before { opacity: 0 !important; }
-  .portfolio-item .portfolio-overlay { opacity: 0 !important; transform: translateY(20px) !important; }
-
-  /* 使用 is-active 顯示 overlay（由 JS 控制） */
-  .portfolio-item.is-active::before { opacity: 1 !important; }
-  .portfolio-item.is-active { transform: scale(1.03) !important; box-shadow: 0 12px 40px rgba(0,0,0,0.35) !important; z-index: 10; }
-  .portfolio-item.is-active .portfolio-placeholder img { transform: scale(1.06); }
-  .portfolio-item.is-active .portfolio-overlay { opacity: 1 !important; transform: translateY(0) !important; }
-}
+  }
   </style>
 </head>
 
@@ -1554,8 +1442,8 @@
   <section id="home" class="hero sectionforhero">
     <div class="hero-content animate__animated animate__fadeIn">
       <h1 class="animate__animated animate__fadeInDown">專業剪髮·藝術造型</h1>
-      <br class="animate__animated animate__fadeInUp animate__delay-1s">
-        為您打造獨一無二的時尚風格</br>展現自信魅力
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">
+        為您打造獨一無二的時尚風格，展現自信魅力
       </p>
       <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-1s">
         <a href="#booking" class="btn">立即預約</a>
@@ -1573,12 +1461,6 @@
       <span class="section-tag">Our Services</span>
       <h2 class="section-title">專業服務項目</h2>
       <p class="section-subtitle">精湛技術·貼心服務·合理價格</p>
-    </div>
-
-    <!-- 行動版縮圖（只在小螢幕顯示） -->
-    <div class="services-mobile" aria-hidden="false">
-      <!-- 請放一張縮圖 services-thumb.jpg（或改成你現有檔名），可同時提供高解析圖 services-thumb-large.jpg -->
-      <img src="./images/items/manu.png" data-large="./images/items/manu.png" alt="服務價目表" class="services-mobile-img" id="serviceThumb">
     </div>
 
     <div class="services-grid">
@@ -1638,18 +1520,7 @@
         </div>
       </div>
     </div>
-
-    <!-- 放大圖片的遮罩 (lightbox) -->
-    <div class="modal" id="imageModal">
-      <span class="modal-close" id="closeModal">&times;</span>
-      <img class="modal-img" id="modalImg" src="" alt="放大圖片">
-    </div>
   </section>
-  <!-- 放大遮罩（lightbox） -->
-  <div id="servicesModal" class="modal" aria-hidden="true" role="dialog" aria-label="服務項目放大檢視">
-    <button class="modal-close" aria-label="關閉放大檢視">✕</button>
-    <img class="modal-img" src="" alt="服務項目放大圖">
-  </div>
 
   <!-- 設計師介紹 -->
   <section id="designer" class="designer-section fade-in">
@@ -1708,9 +1579,7 @@
 
       <div class="portfolio-grid">
         <div class="portfolio-item">
-          <div class="portfolio-placeholder">
-            <img src="./images/hair/1.png" alt="韓系短髮圖片">
-          </div>
+          <div class="portfolio-placeholder">📸</div>
           <div class="portfolio-overlay">
             <h4>韓系短髮</h4>
             <p>清新自然的韓式風格，展現俐落氣質</p>
@@ -1719,22 +1588,16 @@
         </div>
 
         <div class="portfolio-item">
-          <div class="portfolio-placeholder">
-            <img src="./images/hair/2.png" alt="男性短髮圖片">
-
-          </div>
+          <div class="portfolio-placeholder">📸</div>
           <div class="portfolio-overlay">
-            <h4>帥氣短髮</h4>
-            <p>時尚男性短髮</p>
-            <span class="portfolio-tag">#短髮</span>
+            <h4>漸層染髮</h4>
+            <p>時尚漸變色彩，層次分明</p>
+            <span class="portfolio-tag">#染髮</span>
           </div>
         </div>
 
         <div class="portfolio-item">
-          <div class="portfolio-placeholder">
-            <img src="./images/hair/3.png" alt="燙髮圖片">
-
-          </div>
+          <div class="portfolio-placeholder">📸</div>
           <div class="portfolio-overlay">
             <h4>質感燙髮</h4>
             <p>自然蓬鬆捲度，增添女性魅力</p>
@@ -1743,10 +1606,7 @@
         </div>
 
         <div class="portfolio-item">
-          <div class="portfolio-placeholder">
-            <img src="./images/hair/4.png" alt="短髮圖片">
-
-          </div>
+          <div class="portfolio-placeholder">📸</div>
           <div class="portfolio-overlay">
             <h4>俐落短髮</h4>
             <p>個性率性造型，展現自信風采</p>
@@ -1755,48 +1615,20 @@
         </div>
 
         <div class="portfolio-item">
-          <div class="portfolio-placeholder">
-            <img src="./images/hair/5.png" alt="短髮內彎">
-
-          </div>
+          <div class="portfolio-placeholder">📸</div>
           <div class="portfolio-overlay">
-            <h4>浪漫短內灣捲髮</h4>
+            <h4>浪漫長捲髮</h4>
             <p>優雅女性風格，溫柔婉約</p>
             <span class="portfolio-tag">#燙髮</span>
           </div>
         </div>
 
         <div class="portfolio-item">
-          <div class="portfolio-placeholder">
-            <img src="./images/hair/6.png" alt="特殊色髮型">
-
-          </div>
+          <div class="portfolio-placeholder">📸</div>
           <div class="portfolio-overlay">
             <h4>特殊色染髮</h4>
             <p>前衛創意設計，彰顯獨特個性</p>
             <span class="portfolio-tag">#染髮</span>
-          </div>
-        </div>
-        <div class="portfolio-item">
-          <div class="portfolio-placeholder">
-            <img src="./images/hair/7.png" alt="男性髮型">
-
-          </div>
-          <div class="portfolio-overlay">
-            <h4>成熟型男</h4>
-            <p>前衛創意設計，彰顯獨特個性</p>
-            <span class="portfolio-tag">#染髮</span>
-          </div>
-        </div>
-        <div class="portfolio-item">
-          <div class="portfolio-placeholder">
-            <img src="./images/hair/8.png" alt="短髮圖片">
-
-          </div>
-          <div class="portfolio-overlay">
-            <h4>俐落短髮</h4>
-            <p>個性率性造型，展現自信風采</p>
-            <span class="portfolio-tag">#短髮</span>
           </div>
         </div>
       </div>
@@ -1820,7 +1652,7 @@
       <div class="qr-box">
         <a href="https://lin.ee/CPJEleZ" target="_blank">
         <div class="qr-placeholder">
-        <img src="./images/items/lineqrcode.png" alt="Line"></div>
+        <img src="./lineqrcode.png" alt="Line"></div>
         </a>
         <h3 class="booking-title">Line 官方帳號預約</h3>
         <p class="booking-subtitle">
@@ -1955,7 +1787,7 @@ backToTopButton.addEventListener('click', () => {
         // 向下滾動且已超過門檻，隱藏
         navbar.classList.add('hidden');
       } else {
-        // 向上捲動或回到頂部，顯示
+        // 向上滾動或回到頂部，顯示
         navbar.classList.remove('hidden');
       }
  
@@ -2024,54 +1856,19 @@ backToTopButton.addEventListener('click', () => {
  
     // 作品集項目互動
     const portfolioItems = document.querySelectorAll('.portfolio-item');
-portfolioItems.forEach((item, index) => {
-  // 移除直接修改 inline transform 的 click handler（避免與 .is-active 衝突）
-  // 只保留序列動畫與無障礙支援
-  setTimeout(() => {
-    item.classList.add('animate__animated', 'animate__zoomIn');
-  }, index * 150);
-});
-    (function enableTouchOverlayToggle() {
-  // 只在不支援 hover 的裝置啟用（手機/平板）
-  if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
-    const items = document.querySelectorAll('.portfolio-item');
-    if (!items.length) return;
-
-    items.forEach(item => {
-      item.addEventListener('click', function (e) {
-        // 點選同一個則關閉；點別處則開啟並關閉其他項
-        if (this.classList.contains('is-active')) {
-          this.classList.remove('is-active');
-        } else {
-          items.forEach(i => i.classList.remove('is-active'));
-          this.classList.add('is-active');
-        }
-        // 阻止點擊穿透到 document click 關閉處理（見下）
-        e.stopPropagation();
+    portfolioItems.forEach((item, index) => {
+      item.addEventListener('click', function () {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = 'scale(1)';
+        }, 200);
       });
-
-      // 可用鍵盤 Enter/Space 也觸發（無障礙）
-      item.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          this.click();
-        }
-      });
+ 
+      // 序列動畫
+      setTimeout(() => {
+        item.classList.add('animate__animated', 'animate__zoomIn');
+      }, index * 150);
     });
-
-    // 點擊畫面其他處關閉 overlay
-    document.addEventListener('click', function (e) {
-      if (!e.target.closest('.portfolio-item')) {
-        items.forEach(i => i.classList.remove('is-active'));
-      }
-    });
-
-    // 當視窗大小改變（例如旋轉）時關閉所有 overlay
-    window.addEventListener('orientationchange', () => {
-      items.forEach(i => i.classList.remove('is-active'));
-    });
-  }
-})();
  
     // 載入時動畫
     window.addEventListener('load', () => {
@@ -2135,42 +1932,6 @@ portfolioItems.forEach((item, index) => {
         timeout = setTimeout(later, wait);
       };
     }
-
-    // 手機縮圖點擊放大（使用 #servicesModal）
-    (function () {
-      const thumb = document.getElementById('serviceThumb');
-      const modal = document.getElementById('servicesModal');
-      if (!thumb || !modal) return;
-      const modalImg = modal.querySelector('.modal-img');
-      const closeBtn = modal.querySelector('.modal-close');
-
-      function openModal(src) {
-        modalImg.src = src;
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-      function closeModal() {
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-        modalImg.src = '';
-      }
-
-      thumb.addEventListener('click', () => {
-        const large = thumb.dataset.large || thumb.src;
-        openModal(large);
-      });
-      closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
-      });
-    })();
-
-
   </script>
 </body>
 
